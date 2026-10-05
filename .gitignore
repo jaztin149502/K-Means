@@ -1,52 +1,31 @@
-# Dependencies
-node_modules/
+# OS files
+.DS_Store
+Thumbs.db
 
-# Expo
-.expo/
-.expo-shared/
-dist/
-web-build/
-
-# Metro / bundler
-.metro-health-check*
-*.jsbundle
-
-# Native builds
-android/app/build/
-android/build/
-android/.gradle/
-android/local.properties
-android/app/release/
-ios/build/
-ios/Pods/
-ios/*.xcworkspace/xcuserdata/
-*.xcuserstate
-DerivedData/
-
-# Signing keys & certificates
-*.jks
-*.keystore
-*.p8
-*.p12
-*.key
-*.mobileprovision
-
-# Environment / secrets
-.env
-.env.local
-.env.*.local
-
-# Logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-*.log
-
-# IDE / editor
+# Editor/IDE
 .vscode/
 .idea/
 *.swp
 
-# OS files
-.DS_Store
-Thumbs.db
+# Node (if you add any build tools, live-server, etc.)
+node_modules/
+npm-debug.log*
+package-lock.json
+
+# Environment variables
+.env
+
+# Logs
+*.log
+
+# Build output (if you add a bundler later)
+dist/
+build/
+
+# Colab / data working files (keep the exported model, ignore raw working copies)
+*.ipynb_checkpoints/
+*.pyc
+__pycache__/
+
+# Local data dumps (keep this uncommented only if your CSV shouldn't be in the repo)
+# customer_support_tickets.csv
