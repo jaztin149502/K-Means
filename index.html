@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#f3f5f9">
+    <meta name="description" content="Explore support ticket clusters and preview local ticket triage.">
+    <title>Support Ticket Clustering</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script type="module" src="js/app.js"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <div class="status-bar" aria-hidden="true">
+          <span>9:41</span>
+          <span class="system-icons"><i></i><i></i><i></i></span>
+        </div>
+        <div class="brand-row">
+          <div class="brand-lockup">
+            <span class="brand-mark" aria-hidden="true">✣</span>
+            <span>Support Ticket Clustering</span>
+          </div>
+          <span class="local-badge"><span></span> LOCAL</span>
+        </div>
+      </header>
+
+      <main class="screen-content">
+        <section id="overview-screen" class="app-screen" aria-labelledby="overview-title">
+          <p class="eyebrow">OVERVIEW</p>
+          <h1 id="overview-title">Ticket clusters</h1>
+          <p class="screen-description">A clear view of support patterns across the current model.</p>
+
+          <div class="metric-grid" aria-label="Support metrics, demo figures">
+            <article class="metric-card">
+              <div class="metric-heading"><span>Total tickets</span><span class="metric-icon" aria-hidden="true">▣</span></div>
+              <div class="metric-value">482 <span class="trend">+12%</span></div>
+            </article>
+            <article class="metric-card">
+              <div class="metric-heading"><span>Average CSAT</span><span class="metric-icon star-icon" aria-hidden="true">☆</span></div>
+              <div class="metric-value">4.3 <span class="metric-denominator">/ 5.0</span></div>
+            </article>
+          </div>
+
+          <section class="distribution-card" aria-labelledby="distribution-title">
+            <div class="distribution-heading">
+              <div>
+                <h2 id="distribution-title">Cluster distribution</h2>
+                <p>5 clusters · demo snapshot</p>
+              </div>
+              <span class="period-chip">All time <span aria-hidden="true">⌄</span></span>
+            </div>
+            <div class="legend" aria-label="Cluster health legend">
+              <span><i class="legend-dot healthy"></i>Healthy</span>
+              <span><i class="legend-dot moderate"></i>Moderate</span>
+              <span><i class="legend-dot escalation"></i>Escalation</span>
+            </div>
+            <ol class="cluster-list">
+              <li class="cluster-row">
+                <div class="cluster-copy"><span>Quick resolutions</span><span>184 tickets</span></div>
+                <div class="cluster-meter"><span class="healthy" style="--fill: 95%"></span></div>
+                <span class="cluster-percent">38%</span>
+              </li>
+              <li class="cluster-row">
+                <div class="cluster-copy"><span>Routine requests</span><span>132 tickets</span></div>
+                <div class="cluster-meter"><span class="healthy" style="--fill: 68%"></span></div>
+                <span class="cluster-percent">27%</span>
+              </li>
+              <li class="cluster-row">
+                <div class="cluster-copy"><span>Follow-up needed</span><span>86 tickets</span></div>
+                <div class="cluster-meter"><span class="moderate" style="--fill: 44%"></span></div>
+                <span class="cluster-percent">18%</span>
+              </li>
+              <li class="cluster-row">
+                <div class="cluster-copy"><span>Complex cases</span><span>51 tickets</span></div>
+                <div class="cluster-meter"><span class="moderate" style="--fill: 27%"></span></div>
+                <span class="cluster-percent">11%</span>
+              </li>
+              <li class="cluster-row">
+                <div class="cluster-copy"><span>Urgent escalations</span><span>29 tickets</span></div>
+                <div class="cluster-meter"><span class="escalation" style="--fill: 15%"></span></div>
+                <span class="cluster-percent">6%</span>
+              </li>
+            </ol>
+          </section>
+
+          <p class="demo-note">Preview figures from the design. Connect your dataset to show real cluster metrics.</p>
+          <button class="primary-button full-button" type="button" data-open-screen="classify">
+            <span class="button-symbol" aria-hidden="true">＋</span> Classify new ticket
+          </button>
+        </section>
+
+        <section id="classify-screen" class="app-screen" aria-labelledby="classify-title" hidden>
+          <p class="eyebrow">TICKET TRIAGE</p>
+          <h1 id="classify-title">Classify a ticket</h1>
+          <p class="screen-description">Enter operational signals to find the closest support cluster.</p>
+          <p class="model-notice"><span class="notice-dot"></span> Preview only · no trained model loaded</p>
+
+          <form id="ticket-form" class="ticket-form">
+            <label class="field-label" for="sentiment">Sentiment</label>
+            <select id="sentiment" name="sentiment">
+              <option value="positive">Positive</option>
+              <option value="neutral">Neutral</option>
+              <option value="negative" selected>Negative</option>
+            </select>
+
+            <label class="field-label" for="priority">Priority</label>
+            <select id="priority" name="priority">
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high" selected>High</option>
+            </select>
+
+            <div class="field-grid">
+              <div>
+                <label class="field-label" for="first-response">First response time <span>(hours)</span></label>
+                <div class="input-with-suffix">
+                  <input id="first-response" name="firstResponseHours" type="number" min="0" step="0.1" value="1.5" required>
+                  <span>hrs</span>
+                </div>
+              </div>
+              <div>
+                <label class="field-label" for="resolution-time">Resolution time <span>(hours)</span></label>
+                <div class="input-with-suffix">
+                  <input id="resolution-time" name="resolutionHours" type="number" min="0" step="0.1" value="14.0" required>
+                  <span>hrs</span>
+                </div>
+              </div>
+            </div>
+
+            <label class="field-label" for="csat-score">CSAT score</label>
+            <div class="input-with-suffix">
+              <input id="csat-score" name="csat" type="number" min="1" max="5" step="0.1" value="2.0" required>
+              <span>out of 5</span>
+            </div>
+
+            <button class="primary-button full-button classify-button" type="submit">
+              <span aria-hidden="true">✧</span> Classify ticket
+            </button>
+          </form>
+
+          <section id="classification-result" class="classification-result" aria-live="polite" hidden>
+            <div class="result-topline">
+              <span class="result-tag"><span aria-hidden="true">▲</span> DEMO RESULT</span>
+              <span class="match-score">92% match</span>
+            </div>
+            <h2>Complex · at-risk</h2>
+            <p>Long resolution time and low CSAT are driving this example match. Route to an escalation owner.</p>
+            <p class="result-disclaimer">Example output only. A trained model is needed for real classifications.</p>
+          </section>
+        </section>
+
+        <section id="settings-screen" class="app-screen" aria-labelledby="settings-title" hidden>
+          <p class="eyebrow">PREFERENCES</p>
+          <h1 id="settings-title">Settings</h1>
+          <p class="screen-description">Manage the model, privacy, and app appearance.</p>
+
+          <section class="model-card" aria-labelledby="model-card-title">
+            <div class="model-card-heading">
+              <span class="model-icon" aria-hidden="true">▤</span>
+              <div class="model-heading-copy">
+                <h2 id="model-card-title">Clustering model</h2>
+                <p id="model-state">Preview mode · no model loaded</p>
+              </div>
+              <span id="model-badge" class="model-badge">PREVIEW</span>
+            </div>
+            <div class="file-summary">
+              <span class="file-icon" aria-hidden="true">▧</span>
+              <div>
+                <strong id="model-filename">No model imported</strong>
+                <span id="model-file-detail">Demo figures only · not validated</span>
+              </div>
+            </div>
+            <input id="model-file" class="visually-hidden" type="file" accept=".json,application/json">
+            <button id="import-model" class="primary-button import-button" type="button">
+              <span aria-hidden="true">↑</span> Import or update model
+            </button>
+            <p id="import-status" class="import-status" role="status" aria-live="polite"></p>
+          </section>
+
+          <section class="information-card" aria-labelledby="model-info-title">
+            <h2 id="model-info-title">Model information</h2>
+            <dl class="info-list">
+              <div><dt>Cluster count</dt><dd>5 clusters <span>(sample)</span></dd></div>
+              <div><dt>Last updated</dt><dd>Not available</dd></div>
+              <div><dt>Model version</dt><dd>Preview</dd></div>
+            </dl>
+          </section>
+
+          <aside class="privacy-card">
+            <span class="privacy-icon" aria-hidden="true">♧</span>
+            <div>
+              <h2>Private by default</h2>
+              <p>Ticket data stays in this browser. No ticket data is sent to a server.</p>
+            </div>
+          </aside>
+
+          <section class="appearance-card" aria-label="Appearance preferences">
+            <div>
+              <h2>Dark mode</h2>
+              <p id="theme-description">Currently using light mode</p>
+              <span>Switch anytime; your choice stays on this device.</span>
+            </div>
+            <label class="switch" for="dark-mode">
+              <input id="dark-mode" type="checkbox" role="switch" aria-label="Dark mode">
+              <span class="switch-track"></span>
+            </label>
+          </section>
+        </section>
+      </main>
+
+      <nav class="bottom-nav" aria-label="Main navigation">
+        <button class="nav-item is-active" type="button" data-screen="overview" aria-current="page">
+          <span class="nav-icon" aria-hidden="true">⌂</span><span>Home</span>
+        </button>
+        <button class="nav-item" type="button" data-screen="classify">
+          <span class="nav-icon" aria-hidden="true">◎</span><span>Classify</span>
+        </button>
+        <button class="nav-item" type="button" data-screen="settings">
+          <span class="nav-icon" aria-hidden="true">☷</span><span>Settings</span>
+        </button>
+      </nav>
+    </div>
+  </body>
+</html>

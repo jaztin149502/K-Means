@@ -10,7 +10,6 @@ Thumbs.db
 # Node (if you add any build tools, live-server, etc.)
 node_modules/
 npm-debug.log*
-package-lock.json
 
 # Environment variables
 .env
