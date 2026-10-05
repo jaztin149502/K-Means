@@ -1,0 +1,52 @@
+# Dependencies
+node_modules/
+
+# Expo
+.expo/
+.expo-shared/
+dist/
+web-build/
+
+# Metro / bundler
+.metro-health-check*
+*.jsbundle
+
+# Native builds
+android/app/build/
+android/build/
+android/.gradle/
+android/local.properties
+android/app/release/
+ios/build/
+ios/Pods/
+ios/*.xcworkspace/xcuserdata/
+*.xcuserstate
+DerivedData/
+
+# Signing keys & certificates
+*.jks
+*.keystore
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Environment / secrets
+.env
+.env.local
+.env.*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
